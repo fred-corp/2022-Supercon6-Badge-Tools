@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# Modified assembler to work with CircuitPython
+# By Frédéric Druppel (and GitHub Copilot)
+
 # The MIT License (MIT)
 # Copyright © 2022 Mike Szczys
 
@@ -952,11 +955,6 @@ def convert_machine_code_to_binary(mc):
         if i % 4 == 0 and i != 0:
             outstring += " "
     return outstring
-
-    # if options.show_wordspace_or_verbose():
-    #     return " ".join([outstring[:4],outstring[4:8],outstring[8:]])
-    # else:
-    #     return outstring
 
 
 def make_machinecode(opcode, oper_x, oper_y):
