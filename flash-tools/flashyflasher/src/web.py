@@ -4,6 +4,8 @@ import time
 import asyncio
 from adafruit_httpserver import server, response
 import settings
+import os
+import json
 
 from badgeFunctions import *
 
@@ -28,6 +30,24 @@ def upload(request):
 
         loadRAW(data)
         print("done")
+
+@http.route('/getFiles')
+def getFiles(request):
+    # returns a json list of files in /data
+    files = getFileList()
+    print(files)
+    # create json object to send
+    data = json.dumps(files)
+    with response.HTTPResponse(request) as r:
+        r.send(data)
+    
+
+def getFileList():
+    files = {"files": []}
+    for file in os.listdir("/data"):
+        if file.endswith(".asm"):
+            files["files"].append(file)
+    return files
 
 
 def serve():
