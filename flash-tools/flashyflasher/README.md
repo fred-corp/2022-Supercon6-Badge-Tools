@@ -11,7 +11,7 @@ It uses any generic ESP32 board running Circuitpython.
  
 ## Notes
 Don't connect to the SAO header as it can't be used for loading programs (at the time of writing this documentation).  
-Circuitpython must already be installed on your ESP32. [More info here](https://learn.adafruit.com/circuitpython-with-esp32-quick-start/installing-circuitpython).
+Circuitpython must already be installed on your ESP32. [More info here](https://learn.adafruit.com/circuitpython-with-esp32-quick-start/installing-circuitpython).  
 Be patient when running the assembler, it might take up to 10s on a heavy program!  
 To add files, connect the ESP32 to your computer (it should show up as a flashdrive). Drag and drop .asm files in the "data" folder.
 
