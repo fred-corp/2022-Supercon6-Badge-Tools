@@ -2,17 +2,18 @@
 
 ## Introduction
 
-This repo hosts the code for an ESP32-based assembler and loader for the Hackaday Supercon/Berlin badge. 
-It uses any generic ESP32 board running circuit python. 
+This folder hosts the code for an ESP32-based assembler and loader for the Hackaday Supercon/Berlin badge. 
+It uses any generic ESP32 board running Circuitpython. 
 
 ## Requirements 
  - ESP32 board with at least 2 available GPIO (we assigned Tx=3 and Rx=5)
- - Hackaday Berlin badge (duh), UART pins connected to the ESP32 with the beforementioned pins.
+ - Hackaday Berlin badge (duh), UART pins (on the expandion header, pins 2 and 3) connected to the ESP32 with the beforementioned pins.
  
 ## Notes
-Don't connect to the SAO header as it can't be use for loading programs (at the time of writing this documentation).
-Be patient when running the assembler, it might take up to 10s on a heavy program!
-To add files, connect the ESP32 (it should show up as a flashdrive). Drag and drop .asm files in the "data" folder.
+Don't connect to the SAO header as it can't be used for loading programs (at the time of writing this documentation).  
+Circuitpython must already be installed on your ESP32. [More info here](https://learn.adafruit.com/circuitpython-with-esp32-quick-start/installing-circuitpython).
+Be patient when running the assembler, it might take up to 10s on a heavy program!  
+To add files, connect the ESP32 to your computer (it should show up as a flashdrive). Drag and drop .asm files in the "data" folder.
 
 ## Milestones
  - ~~Directly upload a .hex file from the ESP32.~~ Finished just in time for the badge demoscene
