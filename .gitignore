@@ -4,3 +4,4 @@ examples/**/*.hex
 **/__pycache__/**
 *env/**
 .DS_Store
+private
