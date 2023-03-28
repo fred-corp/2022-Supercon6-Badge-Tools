@@ -35,7 +35,7 @@ app.get('/getAssembly/:assemblyFile', (req, res) => {
   res.send({"assembly": assembly})
 })
 
-app.get('/saveAssembly/:assemblyFile/:assembly', (req, res) => {
+app.post('/saveAssembly/:assemblyFile/:assembly', (req, res) => {
   // save assembly
   assemblyFile = req.params.assemblyFile
   // decode base64 data
@@ -44,7 +44,7 @@ app.get('/saveAssembly/:assemblyFile/:assembly', (req, res) => {
   console.log("assembly: " + assembly)
 
 
-  res.send({state: "success"})
+  res.send({state: "success", error: ""})
 })
 
 

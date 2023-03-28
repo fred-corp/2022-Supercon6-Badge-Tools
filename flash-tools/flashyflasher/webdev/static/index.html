@@ -17,6 +17,9 @@
 
     <script>
         var fileList = document.getElementById("fileList");
+        var assemblyEdit = document.getElementById("assemblyEdit");
+        var uploadInfo = document.getElementById("uploadInfo");
+
         var files = [];
         var refresh = function() {
             var xhr = new XMLHttpRequest();
@@ -30,16 +33,15 @@
                         innerHTML += "<option value='" + files[i] + "'>" + files[i] + "</option>";
                     }
                     innerHTML += "</select>";
-                    // add edit button
                     innerHTML += "<a onclick='refreshAssembly()' class='button'><button>Edit</button></a>";
                     fileList.innerHTML = innerHTML;
                 }
             }
             xhr.send();
         }
+
         refresh();
 
-        var assemblyEdit = document.getElementById("assemblyEdit");
         var assembly = "";
         var refreshAssembly = function() {
             var xhr = new XMLHttpRequest();
@@ -70,13 +72,14 @@
             var file = document.getElementsByName("file")[0].value;
             var assembly = document.getElementsByName("assembly")[0].value
             var URL = "/saveAssembly/" + file + "/" + btoa(assembly);
-            xhr.open("GET", URL, true);
+            xhr.open("POST", URL, true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     var response = JSON.parse(xhr.responseText);
                     state = response.state;
+                    error = response.error;
                     if (state == "error") {
-                        innerHTML = "<p>ERROR</p>";
+                        innerHTML = "<p>ERROR : " + error +"</p>";
                     } else {
                         innerHTML = "<p>Assembly saved !</p>";
                     }
@@ -85,12 +88,10 @@
             }
             xhr.send();
         }
-        
 
-        var uploadInfo = document.getElementById("uploadInfo");
         var assemble = function() {
             var file = document.getElementsByName("file")[0].value;
-
+            // TODO : implement logic
             uploadInfo.innerHTML = "Assembling " + file + "...";
         }
         
