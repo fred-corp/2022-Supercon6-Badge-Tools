@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>FlashyFlasher</title>
+<body>
+    <h1>FlashyFlasher</h1>
+    <!-- button to get /upload on click-->
+    <a href="/upload" class="button">Upload</a>
+    <p id="fileList">files</p>
+
+    <script>
+        // fill the filelist paragraph with the files from the json file from /getFiles
+        // the json contains a "files" array with the names of the files
+        // refreshes every 5 seconds
+        
+        var fileList = document.getElementById("fileList");
+        var files = [];
+        var refresh = function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/getFiles", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    var response = JSON.parse(xhr.responseText);
+                    files = response.files;
+                    fileList.innerHTML = files.join("<br>");
+                }
+            }
+            xhr.send();
+        }
+        refresh();
+        setInterval(refresh, 5000);
+        
+    </script>
+</body>

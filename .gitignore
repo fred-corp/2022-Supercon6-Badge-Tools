@@ -4,3 +4,5 @@ examples/**/*.hex
 **/__pycache__/**
 *env/**
 !examples/simenzhor-flappy/hackadayberlin-mode.hex
+.DS_Store
+private

@@ -1,0 +1,16 @@
+body  
+{  
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+  color: #f0f0f0;
+  background-color: #424242;
+  text-align: center;
+}
+
+textarea  
+{  
+  font-family:"Menlo", Times, serif;
+  font-size: 16px;
+  color: #04d200;
+  background-color: #272727;
+  overflow: auto;
+}
