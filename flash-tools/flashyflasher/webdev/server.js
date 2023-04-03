@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 var fs = require('fs');
 var path = require('path');
+var bodyParser = require('body-parser');
+
+var jsonParser = bodyParser.json()
 
 // set root dir
 app.use(express.static(__dirname + '/static/'))
@@ -24,9 +27,8 @@ app.get('/getFiles', (req, res) => {
   res.send(files)
 })
 
-app.get('/getAssembly/:assemblyFile', (req, res) => {
-  // respond with assembly
-  assemblyFile = req.params.assemblyFile
+app.post('/getAssembly', jsonParser, (req, res) => {
+  assemblyFile = req.body.assemblyFile
   console.log("asked for assembly of " + assemblyFile)
   
   // read assembly from file
@@ -35,15 +37,12 @@ app.get('/getAssembly/:assemblyFile', (req, res) => {
   res.send({"assembly": assembly})
 })
 
-app.post('/saveAssembly/:assemblyFile/:assembly', (req, res) => {
+app.post('/saveAssembly', jsonParser, (req, res) => {
   // save assembly
-  assemblyFile = req.params.assemblyFile
-  // decode base64 data
-  assembly = Buffer.from(req.params.assembly, 'base64').toString('ascii')
+  assemblyFile = req.body.assemblyFile
+  assembly = req.body.assembly
   console.log("saving assembly of " + assemblyFile)
   console.log("assembly: " + assembly)
-
-
   res.send({state: "success", error: ""})
 })
 

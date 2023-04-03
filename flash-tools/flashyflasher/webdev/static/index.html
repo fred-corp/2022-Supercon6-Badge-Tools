@@ -46,8 +46,10 @@
         var refreshAssembly = function() {
             var xhr = new XMLHttpRequest();
             var file = document.getElementsByName("file")[0].value;
-            var URL = "/getAssembly/" + file;
-            xhr.open("GET", URL, true);
+            var URL = "/getAssembly";
+            var body = JSON.stringify({"assemblyFile": file});
+            xhr.open("POST", URL);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     var response = JSON.parse(xhr.responseText);
@@ -60,7 +62,7 @@
                     assemblyEdit.innerHTML = innerHTML;
                 }
             }
-            xhr.send();
+            xhr.send(body);
         }
 
         var hideAssembly = function() {
@@ -71,8 +73,10 @@
             var xhr = new XMLHttpRequest();
             var file = document.getElementsByName("file")[0].value;
             var assembly = document.getElementsByName("assembly")[0].value
-            var URL = "/saveAssembly/" + file + "/" + btoa(assembly);
-            xhr.open("POST", URL, true);
+            var URL = "/saveAssembly";
+            var body = JSON.stringify({"assemblyFile": file, "assembly": assembly});
+            xhr.open("POST", URL);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     var response = JSON.parse(xhr.responseText);
@@ -86,7 +90,7 @@
                     assemblyEdit.innerHTML = innerHTML;
                 }
             }
-            xhr.send();
+            xhr.send(body);
         }
 
         var assemble = function() {
