@@ -116,6 +116,10 @@
                     }
                     uploadInfo.innerHTML = innerHTML;
                 }
+                
+                setTimeout(function() {
+                    uploadInfo.innerHTML = "";
+                }, 15000);
             }
             xhr.send(body);
         }
