@@ -14,3 +14,11 @@ textarea
   background-color: #272727;
   overflow: auto;
 }
+
+#message  
+{  
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #ff0000;
+  overflow: auto;
+}
