@@ -46,5 +46,17 @@ app.post('/saveAssembly', jsonParser, (req, res) => {
   res.send({state: "success", error: ""})
 })
 
+app.post('/upload', (req, res) => {
+  // Sleep for 10 sec
+  // respond with compiling.html
+
+  // sleep
+  var start = new Date().getTime();
+  var end = start;
+  while(end < start + 10000) {
+    end = new Date().getTime();
+  }
+  res.send({state: "success", error: "", message: "Press LOAD now !"})
+})
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
